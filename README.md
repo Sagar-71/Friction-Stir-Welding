@@ -219,44 +219,6 @@ Requires Ansys Fluent 2023 R2 or later.
 
 ---
 
-## Assumptions and limitations
-
-These are stated plainly because they bound what the numbers mean.
-
-1. **Full sticking at the tool interface.** The tool wall uses a no-slip
-   condition, so the material is assumed to move exactly with the tool surface.
-   Real FSW involves partial slip, and the slip fraction is the single largest
-   lever on predicted torque. Torque reported here should be read as an upper
-   estimate.
-
-2. **The predicted peak of 591 K is low.** Published peak temperatures for FSW
-   of AA6061 typically fall between 400 and 500 C, whereas this model gives
-   318 C. The likely cause is the h = 10000 W/m2K sink applied across the whole
-   192 x 240 mm bottom face rather than only the anvil contact patch beneath
-   the tool, which over-extracts heat. The ratio to solidus (0.69) is the more
-   defensible way to quote the result until that boundary condition is
-   refined.
-
-3. **Unthreaded cylindrical pin.** No thread features means no thread-driven
-   downward material transport, so through-thickness mixing is under-predicted
-   and the model cannot say anything about wormhole or root defects.
-
-4. **No free surface.** The top surface is a flat wall, so flash formation and
-   shoulder plunge depth effects are absent.
-
-5. **No plunge or dwell phase.** Only the steady traverse portion of the weld
-   is modelled. Transient heating during plunge is not captured.
-
-6. **Single operating point.** One combination of rotation and traverse speed
-   was run. A parametric sweep over the process window is the natural next
-   step and is what would let the model be used for parameter selection rather
-   than for a single prediction.
-
-7. **No experimental validation.** Thermocouple or spindle-current data would
-   be needed to calibrate the viscosity constants and the anvil heat transfer
-   coefficient.
-
----
 
 ## Tools
 
