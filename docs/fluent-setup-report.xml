@@ -1,0 +1,216 @@
+<FluentXMLReport>
+<version>
+Fluent
+Version: 3d, pbns, lam (3d, pressure-based, laminar)
+Release: 23.2.0
+Title: 
+</version>
+
+<Models>
+
+Models
+------
+
+   Model                        Settings   
+   -------------------------------------
+   Space                        3D         
+   Time                         Steady     
+   Viscous                      Laminar    
+   Heat Transfer                Enabled    
+   Solidification and Melting   Disabled   
+   Radiation                    None       
+   Species                      Disabled   
+   Coupled Dispersed Phase      Disabled   
+   NOx Pollutants               Disabled   
+   SOx Pollutants               Disabled   
+   Soot                         Disabled   
+   Mercury Pollutants           Disabled   
+   Structure                    Disabled   
+   Acoustics                    Disabled   
+   Eulerian Wall Film           Disabled   
+   Potential/Electrochemistry   Disabled   
+   Multiphase                   Disabled   
+
+</Models>
+
+<MaterialProperties>
+Material Properties
+-------------------
+
+   Material: aa6061 (fluid)
+
+      Property               Units      Method                    Value(s)                                   
+      ----------------------------------------------------------------------------------------------------
+      Density                kg/m^3     constant                  2700                                       
+      Cp (Specific Heat)     J/(kg K)   polynomial                929 -0.627 0.00148 -4.33e-08               
+      Thermal Conductivity   W/(m K)    polynomial                25.2 0.398 7.36e-06 -2.52e-07              
+      Viscosity              kg/(m s)   non-newtonian-power-law   (68817300 0.0421 1000 1000000 298 1380 )   
+      Molecular Weight       kg/kmol    constant                  28.966                                     
+
+   Material: aluminum (solid)
+
+      Property               Units      Method     Value(s)   
+      -----------------------------------------------------
+      Density                kg/m^3     constant   2719       
+      Cp (Specific Heat)     J/(kg K)   constant   871        
+      Thermal Conductivity   W/(m K)    constant   202.4      
+
+</MaterialProperties>
+
+<CellZoneConditions>
+Cell Zone Conditions
+--------------------
+
+   Zones
+
+      name    id   type    
+      ------------------
+      solid   3    fluid   
+
+   Setup Conditions
+
+      solid
+
+         Condition       Value   
+         ---------------------
+         Frame Motion?   no      
+
+</CellZoneConditions>
+
+<BoundaryConditions>
+Boundary Conditions
+-------------------
+
+   Zones
+
+      name             id   type              
+      -------------------------------------
+      wall-solid       1    wall              
+      velocityinlet    6    velocity-inlet    
+      pressureoutlet   7    pressure-outlet   
+      fswtool          8    wall              
+      topface          9    wall              
+      buttomface       10   wall              
+
+   Setup Conditions
+
+      wall-solid
+
+         Condition                                            Value         
+         ----------------------------------------------------------------
+         Thermal BC Type                                      Convection    
+         Convective Heat Transfer Coefficient [W/(m^2 K)]     30            
+         Wall Motion                                          Moving Wall   
+         Shear Boundary Condition                             No Slip       
+         Define wall motion relative to adjacent cell zone?   no            
+         Velocity Magnitude [m/s]                             0.00133       
+
+      velocityinlet
+
+         Condition                       Value                     
+         -------------------------------------------------------
+         Velocity Specification Method   Magnitude and Direction   
+         Velocity Magnitude [m/s]        0.00133                   
+
+      pressureoutlet
+
+         Condition                                 Value              
+         ----------------------------------------------------------
+         Backflow Direction Specification Method   Direction Vector   
+
+      fswtool
+
+         Condition                                            Value         
+         ----------------------------------------------------------------
+         Thermal BC Type                                      Heat Flux     
+         Wall Motion                                          Moving Wall   
+         Shear Boundary Condition                             No Slip       
+         Define wall motion relative to adjacent cell zone?   no            
+         Apply a rotational velocity to this wall?            yes           
+         Rotation Speed [rad/s]                               74.351        
+
+      topface
+
+         Condition                                            Value         
+         ----------------------------------------------------------------
+         Thermal BC Type                                      Convection    
+         Convective Heat Transfer Coefficient [W/(m^2 K)]     30            
+         Wall Motion                                          Moving Wall   
+         Shear Boundary Condition                             No Slip       
+         Define wall motion relative to adjacent cell zone?   no            
+         Velocity Magnitude [m/s]                             0.00133       
+
+      buttomface
+
+         Condition                                            Value         
+         ----------------------------------------------------------------
+         Thermal BC Type                                      Convection    
+         Convective Heat Transfer Coefficient [W/(m^2 K)]     10000         
+         Wall Motion                                          Moving Wall   
+         Shear Boundary Condition                             No Slip       
+         Define wall motion relative to adjacent cell zone?   no            
+         Velocity Magnitude [m/s]                             0.00133       
+
+</BoundaryConditions>
+
+<SolverSettings>
+Solver Settings
+---------------
+
+   Equations
+
+      Equation   Solved   
+      -----------------
+      Flow       yes      
+      Energy     yes      
+
+   Numerics
+
+      Numeric                         Enabled   
+      ---------------------------------------
+      Absolute Velocity Formulation   yes       
+
+   Pseudo Time Explicit Relaxation Factors
+
+      Variable            Relaxation Factor   
+      -------------------------------------
+      Density             1                   
+      Body Forces         1                   
+      Energy              0.75                
+      Explicit Momentum   0.5                 
+      Explicit Pressure   0.5                 
+
+   Linear Solver
+
+      Variable   Solver Type   Termination Criterion   Residual Reduction Tolerance   
+      -----------------------------------------------------------------------------
+      Flow       F-Cycle       0.1                                                    
+      Energy     F-Cycle       0.1                                                    
+
+   Pressure-Velocity Coupling
+
+      Parameter                               Value     
+      -----------------------------------------------
+      Type                                    Coupled   
+      Pseudo Time Method (Global Time Step)   yes       
+
+   Discretization Scheme
+
+      Variable   Scheme                
+      ------------------------------
+      Pressure   Second Order          
+      Momentum   Second Order Upwind   
+      Energy     Second Order Upwind   
+
+   Solution Limits
+
+      Quantity                         Limit   
+      --------------------------------------
+      Minimum Absolute Pressure [Pa]   1       
+      Maximum Absolute Pressure [Pa]   5e+10   
+      Minimum Static Temperature [K]   1       
+      Maximum Static Temperature [K]   5000    
+
+</SolverSettings>
+
+</FluentXMLReport>

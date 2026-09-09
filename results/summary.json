@@ -1,0 +1,49 @@
+{
+  "domain": {
+    "plate_length_mm": 240.0,
+    "plate_width_mm": 192.0,
+    "plate_thickness_mm": 6.0,
+    "cells": 133592,
+    "faces": 274816,
+    "nodes": 26167
+  },
+  "tool": {
+    "shoulder_diameter_mm": 24.0,
+    "pin_diameter_mm": 6.0,
+    "pin_length_mm": 5.0
+  },
+  "boundary_zones": [
+    "buttomface",
+    "fswtool",
+    "interior-solid",
+    "pressureoutlet",
+    "topface",
+    "velocityinlet",
+    "wall-solid"
+  ],
+  "fields": {
+    "temperature_min_K": 300.0,
+    "temperature_max_K": 590.96,
+    "viscosity_min_Pa_s": 1862.8,
+    "viscosity_max_Pa_s": 1000000.0,
+    "velocity_max_m_s": 0.66499
+  },
+  "converged_loads": {
+    "iterations": 352,
+    "tool_torque_N_m": 37.7331,
+    "weld_force_N": 10.5068,
+    "lateral_force_N": 9.8243,
+    "thrust_force_N": 2.4956
+  },
+  "derived": {
+    "rotation_speed_rpm": 710.0,
+    "traverse_speed_mm_min": 79.8,
+    "revolutions_per_mm": 8.9,
+    "shoulder_edge_speed_m_s": 0.8922,
+    "spindle_power_W": 2805.5,
+    "heat_input_kJ_per_mm": 2.109,
+    "peak_T_over_solidus": 0.691,
+    "peak_T_over_liquidus": 0.639,
+    "peak_T_celsius": 317.81
+  }
+}

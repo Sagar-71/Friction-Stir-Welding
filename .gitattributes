@@ -1,0 +1,9 @@
+*.h5      binary
+*.agdb    binary
+*.wbpj    binary
+*.msh     binary
+*.gz      binary
+*.png     binary
+*.out     text eol=lf
+*.py      text eol=lf
+*.md      text eol=lf

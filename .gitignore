@@ -1,0 +1,28 @@
+# Ansys Workbench working directories and lock files
+*.lock
+*_files/dp0/**/Fluent/*.trn
+*.bak
+dp0/
+progress_files/
+session_files/
+user_files/
+
+# Fluent transcripts, intermediate data and error logs
+*.trn
+fluent-*-error.log
+cleanup-fluent*
+*.cas.h5.bak
+FFF-1-000[0-3][0-9].dat.h5
+!FFF-1-00352.dat.h5
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
